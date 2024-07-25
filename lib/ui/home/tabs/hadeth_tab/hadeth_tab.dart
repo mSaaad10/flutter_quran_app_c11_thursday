@@ -29,8 +29,8 @@ class _HadethTabState extends State<HadethTab> {
                   child: Expanded(
                     flex: 2,
                     child: ListView.separated(
-                        itemBuilder: (context, index) => HadithTitleWidget(
-                            hadithTitle: allHadithList[index].title),
+                        itemBuilder: (context, index) =>
+                            HadithTitleWidget(hadith: allHadithList[index]),
                         separatorBuilder: (context, index) => Container(
                               margin: EdgeInsets.symmetric(horizontal: 26),
                               color: Color(0xFFB7935F),
