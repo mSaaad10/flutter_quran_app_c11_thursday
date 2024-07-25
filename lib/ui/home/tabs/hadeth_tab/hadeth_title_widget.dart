@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:islami_c11_thursday/ui/home/tabs/hadeth_tab/hadeth_details/hadeth_details_screen.dart';
+import 'package:islami_c11_thursday/ui/home/tabs/hadeth_tab/hadeth_tab.dart';
 
 class HadithTitleWidget extends StatelessWidget {
-  String hadithTitle;
+  HadithItem hadith;
 
-  HadithTitleWidget({required this.hadithTitle});
+  HadithTitleWidget({required this.hadith});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 6),
-      alignment: Alignment.center,
-      child: Text(
-        hadithTitle,
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          HadithDetailsScreen.routeName,
+          arguments: hadith,
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 6),
+        alignment: Alignment.center,
+        child: Text(
+          hadith.title,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+        ),
       ),
     );
   }
