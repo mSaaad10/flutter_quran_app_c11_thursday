@@ -22,7 +22,7 @@ class HadithTitleWidget extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           hadith.title,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ),
     );

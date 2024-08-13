@@ -18,30 +18,26 @@ class _HadethTabState extends State<HadethTab> {
         ? Center(
             child: CircularProgressIndicator(),
           )
-        : Container(
-            child: Column(
-              children: [
-                Expanded(
-                    flex: 1,
-                    child: Image.asset(
-                        getImagePathByName('hadeth_header_image.png'))),
-                Expanded(
-                  child: Expanded(
-                    flex: 2,
-                    child: ListView.separated(
-                        itemBuilder: (context, index) =>
-                            HadithTitleWidget(hadith: allHadithList[index]),
-                        separatorBuilder: (context, index) => Container(
-                              margin: EdgeInsets.symmetric(horizontal: 26),
-                              color: Color(0xFFB7935F),
-                              width: double.infinity,
-                              height: 2,
-                            ),
-                        itemCount: allHadithList.length),
-                  ),
-                )
-              ],
-            ),
+        : Column(
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: Image.asset(
+                      getImagePathByName('hadeth_header_image.png'))),
+              Expanded(
+                flex: 3,
+                child: ListView.separated(
+                    itemBuilder: (context, index) =>
+                        HadithTitleWidget(hadith: allHadithList[index]),
+                    separatorBuilder: (context, index) => Container(
+                          margin: EdgeInsets.symmetric(horizontal: 26),
+                          color: Theme.of(context).dividerColor,
+                          width: double.infinity,
+                          height: 2,
+                        ),
+                    itemCount: allHadithList.length),
+              )
+            ],
           );
   }
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_c11_thursday/providers/settings_provider/settings_provider.dart';
 import 'package:islami_c11_thursday/ui/home/tabs/quran_tab/quran_details/sura_details_widget.dart';
 import 'package:islami_c11_thursday/ui/home/tabs/quran_tab/sura_title_widget.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetailsScreen extends StatefulWidget {
   static const String routeName = '/quran';
@@ -15,6 +17,7 @@ class _QuranDetailsScreenState extends State<QuranDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     SuraArguments arguments =
         ModalRoute.of(context)?.settings.arguments as SuraArguments;
     if (verses.isEmpty) readQuranFileContent(arguments.index);
@@ -22,7 +25,7 @@ class _QuranDetailsScreenState extends State<QuranDetailsScreen> {
       decoration: BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.fill,
-              image: AssetImage('assets/images/main_background.png'))),
+              image: AssetImage(provider.getBackgroundImagePath()))),
       child: Scaffold(
           appBar: AppBar(
             title: Text(arguments.title),
@@ -34,15 +37,15 @@ class _QuranDetailsScreenState extends State<QuranDetailsScreen> {
               : Card(
                   child: ListView.separated(
                   separatorBuilder: (context, index) => Container(
-                    color: Color(0xFFB7935F),
+                  color: Theme.of(context).dividerColor,
                     width: double.infinity,
                     height: 2,
                     margin: EdgeInsets.symmetric(horizontal: 22),
                   ),
-                  itemBuilder: (context, index) =>
-                      SuraDetailsWidget(verse: verses[index]),
-                  itemCount: verses.length,
-                ))),
+                itemBuilder: (context, index) =>
+                    SuraDetailsWidget(verse: verses[index]),
+                itemCount: verses.length,
+              ))),
     );
   }
 
