@@ -12,8 +12,7 @@ class SuraDetailsWidget extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         verse,
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w400, color: Colors.black),
+        style: Theme.of(context).textTheme.bodyMedium,
         textDirection: TextDirection.rtl,
         textAlign: TextAlign.center,
       ),
